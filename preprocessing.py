@@ -4,6 +4,7 @@ import operator
 import numpy as np
 import string
 from sklearn.feature_extraction.text import CountVectorizer
+from tensorport import get_data_path
 
 
 # Read csv file and return Pandas DataFrame
@@ -95,8 +96,14 @@ def sentence_to_emb(sentence, vocab, maxlen):
         out.append(vocab.get(word, 1))
     return np.array(out)
 
+LOCAL_DATA_PATH = '~/tensorportdemo/'
+train_data_path = get_data_path(
+        dataset_name="yevhentysh/train-csv",
+        local_root=LOCAL_DATA_PATH,
+        local_repo='data',
+        path="train")
 
-train_df = create_df("train")
+train_df = create_df(train_data_path)
 
 train_df.text = train_df.text.apply(clean_text)
 train_df.txt = train_df.text.apply(lambda row: lemmatize_text(row))

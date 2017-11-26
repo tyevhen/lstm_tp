@@ -57,7 +57,7 @@ if __name__ == "__main__":
         local_repo='data',
         path="train")
 
-    train_df = create_df("train")
+    train_df = create_df(train_data_path)
     train_df.text = train_df.text.apply(clean_text)
     train_df.txt = train_df.text.apply(lambda row: lemmatize_text(row))
 
