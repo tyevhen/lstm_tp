@@ -105,8 +105,8 @@ train_data_path = get_data_path(
 
 train_df = create_df(train_data_path)
 
-train_df.text = train_df.text.apply(clean_text)
-train_df.txt = train_df.text.apply(lambda row: lemmatize_text(row))
+# train_df.text = train_df.text.apply(clean_text)
+train_df.text = train_df.text.apply(lambda row: lemmatize_text(row))
 
 vocab = get_vocabulary(train_df, length=5000)
 emb = embedding_mapping(vocab)
