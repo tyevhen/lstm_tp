@@ -6,7 +6,9 @@ import string
 from sklearn.feature_extraction.text import CountVectorizer
 from tensorport import get_data_path
 
-nltk.download()
+
+popular = nltk.download('popular')
+
 # Read csv file and return Pandas DataFrame
 def create_df(filename):
     df = pd.read_csv(filename)
@@ -15,7 +17,7 @@ def create_df(filename):
 
 # Delete punctuation and stopwords
 def clean_text(text):
-    stopwords = nltk.corpus.stopwords.words("english")
+    stopwords = popular.corpus.stopwords.words("english")
     lowercase_text = text.lower()
     tokenize_text = nltk.word_tokenize(lowercase_text)
     text_without_stopwords = [w for w in tokenize_text if w not in stopwords]
@@ -31,7 +33,7 @@ def lemmatize_text(text, stem=False):
     """
     text = text.split()
     if stem:
-        stemmer = nltk.stem.PorterStemmer()
+        stemmer = popular.stem.PorterStemmer()
         normal_txt = [stemmer.stem(w) for w in text]
     else:
         lemmanizer = nltk.stem.WordNetLemmatizer()
