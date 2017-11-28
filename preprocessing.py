@@ -19,10 +19,10 @@ def create_df(filename):
 
 # Delete punctuation and stopwords
 def clean_text(text):
-    stopwords = stopwords.words("english")
+    stopwrds = stopwords.words("english")
     lowercase_text = text.lower()
     tokenize_text = nltk.word_tokenize(lowercase_text)
-    text_without_stopwords = [w for w in tokenize_text if w not in stopwords]
+    text_without_stopwords = [w for w in tokenize_text if w not in stopwrds]
     pure_txt = [w for w in text_without_stopwords if w not in string.punctuation]
     return " ".join(pure_txt)
 
