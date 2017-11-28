@@ -53,10 +53,10 @@ if __name__ == "__main__":
 
     LOCAL_DATA_PATH = '~/Neural Networks/'
 	train_data_path = get_data_path(
-        dataset_name="yevhentysh/train-reloaded",
-        local_root=LOCAL_DATA_PATH,
-        local_repo='data',
-        path="train")
+		dataset_name="yevhentysh/train-reloaded",
+		local_root=LOCAL_DATA_PATH,
+		local_repo='data',
+		path="train")
 
     train_df = create_df(train_data_path)
     train_df.text = train_df.text.apply(clean_text)
