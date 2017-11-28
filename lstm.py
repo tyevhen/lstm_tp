@@ -1,3 +1,4 @@
+import sys
 from keras.layers import Embedding, Dense, LSTM, Activation, Dropout
 from keras.models import Sequential
 from keras.utils.np_utils import to_categorical
@@ -82,4 +83,5 @@ if __name__ == "__main__":
     model.fit(X_train, y_train, batch_size=batch_size, epochs=num_epochs)
 
     scores = model.evaluate(X_test, y_test)
-    print("Accuracy:", scores[1])
+    # print("Accuracy:", scores[1])
+    sys.stdout.write(scores[1])
