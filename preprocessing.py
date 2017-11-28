@@ -6,7 +6,7 @@ import string
 from sklearn.feature_extraction.text import CountVectorizer
 from tensorport import get_data_path
 
-
+nltk.download()
 # Read csv file and return Pandas DataFrame
 def create_df(filename):
     df = pd.read_csv(filename)
