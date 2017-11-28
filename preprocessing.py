@@ -1,4 +1,6 @@
 import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
 import pandas as pd
 import operator
 import numpy as np
@@ -7,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from tensorport import get_data_path
 
 
-popular = nltk.download('popular')
+nltk.download('popular')
 
 # Read csv file and return Pandas DataFrame
 def create_df(filename):
@@ -17,7 +19,7 @@ def create_df(filename):
 
 # Delete punctuation and stopwords
 def clean_text(text):
-    stopwords = popular.corpus.stopwords.words("english")
+    stopwords = stopwords.words("english")
     lowercase_text = text.lower()
     tokenize_text = nltk.word_tokenize(lowercase_text)
     text_without_stopwords = [w for w in tokenize_text if w not in stopwords]
@@ -33,10 +35,10 @@ def lemmatize_text(text, stem=False):
     """
     text = text.split()
     if stem:
-        stemmer = popular.stem.PorterStemmer()
+        stemmer = PorterStemmer()
         normal_txt = [stemmer.stem(w) for w in text]
     else:
-        lemmanizer = nltk.stem.WordNetLemmatizer()
+        lemmanizer = WordNetLemmatizer()
         normal_txt = [lemmanizer.lemmatize(w) for w in text]
     return " ".join(normal_txt)
 
@@ -98,9 +100,9 @@ def sentence_to_emb(sentence, vocab, maxlen):
         out.append(vocab.get(word, 1))
     return np.array(out)
 
-LOCAL_DATA_PATH = '~/tensorportdemo/'
+LOCAL_DATA_PATH = '~/Neural Networks/'
 train_data_path = get_data_path(
-        dataset_name="yevhentysh/train-csv",
+        dataset_name="yevhentysh/train-reloaded",
         local_root=LOCAL_DATA_PATH,
         local_repo='data',
         path="train")

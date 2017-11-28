@@ -51,9 +51,9 @@ def encode_texts(text, embedding_vocab, embedding_size):
 
 if __name__ == "__main__":
 
-    LOCAL_DATA_PATH = '~/tensorportdemo/'
-    train_data_path = get_data_path(
-        dataset_name="yevhentysh/train-csv",
+    LOCAL_DATA_PATH = '~/Neural Networks/'
+	train_data_path = get_data_path(
+        dataset_name="yevhentysh/train-reloaded",
         local_root=LOCAL_DATA_PATH,
         local_repo='data',
         path="train")
